@@ -1,19 +1,5 @@
 "use strict";
 
-/* global XXH */
-/* exported --
-    p3_preload
-    p3_setup
-    p3_worldKeyChanged
-    p3_tileWidth
-    p3_tileHeight
-    p3_tileClicked
-    p3_drawBefore
-    p3_drawTile
-    p3_drawSelectedTile
-    p3_drawAfter
-*/
-
 function p3_preload() {}
 
 function p3_setup() {}
@@ -57,7 +43,7 @@ function p3_drawBefore() {}
 function p3_drawTile(i, j) {
     noStroke();
 
-    let h = 10 * noise(window.xnoise, window.ynoise);
+    let h = 10 * noise(0.2 * i, 0.2 * j);
     //console.log(h);
     //console.log(h)
     if (h < water) {
@@ -89,8 +75,8 @@ function p3_drawTile(i, j) {
 
     let n = clicks[[i, j]] | 0;
     if (n % 2 == 1) {
-        fill(255, 255, 0, 180);
-        ellipse(th / 2, tw / 2, 10, 10);
+        fill(164, 116, 73);
+        rect(th / 2, tw / 2, 10, 10);
     }
 
     pop();
