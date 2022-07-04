@@ -58,7 +58,7 @@ function p3_drawTile(i, j) {
     noStroke();
 
     let h = 10 * noise(window.xnoise, window.ynoise);
-    console.log(h);
+    //console.log(h);
     //console.log(h)
     if (h < water) {
         //water
@@ -110,11 +110,6 @@ function p3_drawSelectedTile(i, j) {
     noStroke();
     fill(0);
     text("(" + [i, j] + ")", 0, 0);
-}
-
-function setxynoise(xnoise, ynoise) {
-    this.xnoise = xnoise;
-    this.ynoise = ynoise;
 }
 
 function p3_drawAfter() {}

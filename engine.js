@@ -46,6 +46,7 @@ function rebuildWorld(key) {
     tile_rows = Math.ceil(height / tile_height);
 }
 
+
 function cameraToWorldOffset([camera_x, camera_y]) {
     let world_x = camera_x / (tile_width);
     let world_y = camera_y / (tile_height);
@@ -55,26 +56,26 @@ function cameraToWorldOffset([camera_x, camera_y]) {
 function draw() {
     // Keyboard controls!
     if (keyIsDown(LEFT_ARROW)) {
-        camera_velocity.x -= 1;
+        camera_velocity.x -= 0.1;
     }
     if (keyIsDown(RIGHT_ARROW)) {
-        camera_velocity.x += 1;
+        camera_velocity.x += 0.1;
     }
     if (keyIsDown(DOWN_ARROW)) {
-        camera_velocity.y += 1;
+        camera_velocity.y += 0.1;
     }
     if (keyIsDown(UP_ARROW)) {
-        camera_velocity.y -= 1;
+        camera_velocity.y -= 0.1;
     }
-
-    let camera_delta = new p5.Vector(0, 0);
-    camera_velocity.add(camera_delta);
-    camera_offset.add(camera_velocity);
-    camera_velocity.mult(0.95); // cheap easing
-    if (camera_velocity.mag() < 0.01) {
-        camera_velocity.setMag(0);
-    }
-
+    /*
+        let camera_delta = new p5.Vector(0, 0);
+        camera_velocity.add(camera_delta);
+        camera_offset.add(camera_velocity);
+        camera_velocity.mult(0.95); // cheap easing
+        if (camera_velocity.mag() < 0.01) {
+            camera_velocity.setMag(0);
+        }
+    */
     let world_pos = screenToWorld(
         [mouseX, mouseY], [camera_offset.x, camera_offset.y]
     );
@@ -87,6 +88,7 @@ function draw() {
     }
 
     let xnoise = camera_velocity.x;
+    console.log('camera velocity:' + camera_velocity);
 
     for (let y = 0; y < tile_rows; y++) {
         let ynoise = camera_velocity.y;
